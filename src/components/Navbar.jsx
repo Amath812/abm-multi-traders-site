@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "../assets/logo.jpg";
 
 const categories = [
   "Apparel",
@@ -14,24 +15,41 @@ const categories = [
 const Navbar = () => {
   return (
     <nav className="bg-white border-b shadow-sm sticky top-0 z-20">
-      <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-1 py-3 flex items-center justify-between">
+        
+        {/* Logo + Name */}
         <Link to="/" className="flex items-center gap-2">
-          <span className="text-xl font-bold tracking-tight text-indigo-700">
+          <img 
+            src={logo} 
+            alt="ABM Logo" 
+            className="w-8 h-8 object-contain"
+          />
+          <span className="text-2xl font-bold tracking-tight text-blue-900">
             ABM Multi Traders
           </span>
         </Link>
 
+        {/* Nav Links */}
         <div className="flex items-center gap-6 text-sm font-medium">
-          <Link to="/" className="hover:text-indigo-700">
+          <Link to="/" className="text-black hover:text-indigo-700">
             Home
           </Link>
 
+          {/* Categories Dropdown */}
           <div className="relative group">
             <button className="hover:text-indigo-700 flex items-center gap-1">
-              Categories
-              <span>▾</span>
+              Categories <span>▾</span>
             </button>
-            <div className="absolute hidden group-hover:block mt-2 bg-white border rounded shadow-lg w-64 max-h-80 overflow-y-auto">
+
+            {/* Dropdown */}
+            <div
+              className="
+                absolute left-0 mt-2 w-64 bg-white border rounded shadow-lg max-h-80 overflow-y-auto
+                opacity-0 group-hover:opacity-100 
+                pointer-events-none group-hover:pointer-events-auto
+                transition duration-150 ease-in-out
+              "
+            >
               {categories.map((cat) => (
                 <Link
                   key={cat}

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";        // <-- ADD THIS
 import { supabase } from "../supabase/client";
 import ItemCard from "../components/ItemCard";
+import heroBg from "../assets/hero-bg.jpg";
 
 const Home = () => {
   const [items, setItems] = useState([]);
@@ -29,22 +31,27 @@ const Home = () => {
   }, []);
 
   return (
-    <main className="max-w-6xl mx-auto px-4 py-8">
+    <main className="mx-auto px-2 py-0">
 
-      {/* ================================
-          FULL-SCREEN HERO SECTION
-      ================================= */}
-      <section className="h-screen grid gap-6 md:grid-cols-2 items-center relative">
-        <div>
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+      {/* HERO SECTION */}
+      <section
+        className="h-screen grid gap-4 md:grid-cols-2 items-start relative pt-20 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(${heroBg})`,
+          backgroundColor: "rgba(0, 0, 0, 0.45)",
+          backgroundBlendMode: "darken",
+        }}
+      >
+        <div className="pl-6 md:pl-8">
+          <h1 className="text-2xl md:text-6xl font-bold mb-6 text-white">
             Quality Promotional Items Tailored to Showcase Your Brand
           </h1>
-          <p className="text-sm md:text-base text-gray-700 leading-relaxed whitespace-pre-line">
+          <p className="text-sm md:text-base text-gray-200 leading-relaxed whitespace-pre-line">
             {introText}
           </p>
         </div>
 
-        <div className="bg-white border rounded-xl shadow-sm p-5 text-sm text-gray-700">
+        <div className="bg-white/50 backdrop-blur-sm border rounded-xl shadow-sm p-8 text-sm text-gray-700 pl-2 md:pl-10">
           <h2 className="font-semibold text-lg mb-3">What We Can Help You With</h2>
           <ul className="list-disc list-inside space-y-1">
             <li>Corporate giveaways and event merchandise</li>
@@ -55,28 +62,23 @@ const Home = () => {
           </ul>
         </div>
 
-        {/* Scroll Button */}
         <button
           onClick={() =>
             document.getElementById("expertise")?.scrollIntoView({ behavior: "smooth" })
           }
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 px-4 py-2 bg-black text-white rounded-full text-sm shadow hover:bg-gray-700 transition"
+          className="absolute bottom-16 left-1/2 -translate-x-1/2 px-4 py-2 bg-white text-black rounded-full text-sm shadow hover:bg-gray-200 transition"
         >
           ↓ Scroll
         </button>
       </section>
 
-      {/* =====================================================
-          EXPERTISE SECTION (scroll target)
-      ====================================================== */}
-      <section id="expertise" className="mb-10 grid gap-6 md:grid-cols-2 items-center">
+      {/* EXPERTISE SECTION */}
+      <section id="expertise" className="mb-10 grid gap-6 md:grid-cols-2 items-center pt-14">
         <div>
           <h2 className="text-2xl font-bold mb-4 text-gray-900">Our Expertise</h2>
           <p className="text-gray-700 leading-relaxed text-sm md:text-base">
             At ABM Multi Traders, we specialize in providing customized promotional items
-            that elevate your brand visibility. With a wide selection of products ranging
-            from budget-friendly to premium options, we tailor solutions to meet your 
-            business needs and marketing goals.
+            that elevate your brand visibility.
           </p>
         </div>
 
@@ -87,9 +89,7 @@ const Home = () => {
         />
       </section>
 
-      {/* =====================================================
-          SERVICES SECTION
-      ====================================================== */}
+      {/* SERVICES */}
       <section className="mb-12 grid gap-6 md:grid-cols-2 items-center">
         <img
           src="https://images.pexels.com/photos/5632400/pexels-photo-5632400.jpeg"
@@ -108,9 +108,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* =====================================================
-          RECENT ITEMS SECTION
-      ====================================================== */}
+      {/* RECENT ITEMS SECTION */}
       <section>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg md:text-xl font-semibold">Recently Added Items</h2>
@@ -124,9 +122,16 @@ const Home = () => {
           </p>
         ) : (
           <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-            {items.map((item) => (
-              <ItemCard key={item.id} item={item} />
-            ))}
+            {items
+              .slice(0, 6)     // ONLY 6 MOST RECENT
+              .map((item) => (
+                <Link
+                  key={item.id}
+                  to={`/category/${encodeURIComponent(item.category)}?itemId=${item.id}`}
+                >
+                  <ItemCard item={item} />
+                </Link>
+              ))}
           </div>
         )}
       </section>
