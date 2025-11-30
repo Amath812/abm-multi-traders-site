@@ -10,3 +10,8 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Hide tiny horizontal overflow while you inspect root cause */
+html, body {
+  overflow-x: hidden;
+}

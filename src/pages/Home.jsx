@@ -66,7 +66,7 @@ const Home = () => {
           onClick={() =>
             document.getElementById("expertise")?.scrollIntoView({ behavior: "smooth" })
           }
-          className="absolute bottom-16 left-1/2 -translate-x-1/2 px-4 py-2 bg-white text-black rounded-full text-sm shadow hover:bg-gray-200 transition"
+          className="absolute bottom-16 left-0 right-0 mx-auto w-max px-4 py-2 bg-white text-black rounded-full text-sm shadow hover:bg-gray-200 transition"
         >
           ↓ Scroll
         </button>
