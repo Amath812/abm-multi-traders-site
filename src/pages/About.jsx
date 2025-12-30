@@ -25,6 +25,7 @@ const About = () => {
           <div className="text-gray-700 text-sm md:text-base leading-relaxed">
             <p><strong>Telephone:</strong> 077 249 6998 / 011 292 9655</p>
             <p><strong>Email:</strong> abmmulty.lk@gmail.com / shivantha008@gmail.com</p>
+            <p><strong>Facebook:</strong> <a href="https://web.facebook.com/abmmultytraders/photos_by" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">facebook.com/abmmultytraders</a></p>
           </div>
 
           <p className="text-gray-700 text-sm md:text-base leading-relaxed pt-4">

@@ -20,8 +20,9 @@ const Home = () => {
         .limit(12);
 
       if (error) {
-        console.error("Error loading items", error);
+        console.error("❌ Error loading items:", error);
       } else {
+        console.log("✅ Successfully loaded items:", data);
         setItems(data || []);
       }
       setLoading(false);
