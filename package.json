@@ -2,10 +2,12 @@
   "name": "abm-multi-traders-site",
   "version": "1.0.0",
   "private": true,
+  "engines": { "node": "20.x" },
   "scripts": {
     "dev": "vite",
-    "build": "npx vite build",
-    "preview": "vite preview"
+    "build": "vite build",
+    "preview": "vite preview",
+    "postinstall": "chmod +x node_modules/.bin/vite || true"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.1",
