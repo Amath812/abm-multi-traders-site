@@ -23,11 +23,6 @@
     "tailwindcss": "^3.4.15",
     "vite": "^5.4.0",
     "rollup": "^4.24.0",
-    "@rollup/rollup-linux-x64-gnu": "^4.24.0",
-    "@rollup/rollup-win32-x64-msvc": "^4.24.0"
-  },
-  "error": {
-    "message": "CategoryInfo          : WriteError: (D:\\abm-multi-traders-site\\node_module s:DirectoryInfo) [Remove-Item], IOException",
-    "code": "FullyQualifiedErrorId : RemoveFileSystemItemIOError,Microsoft.PowerShell.C ommands.RemoveItemCommand"
+    "@rollup/rollup-linux-x64-gnu": "^4.24.0"
   }
 }
